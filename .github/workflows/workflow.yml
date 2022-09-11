@@ -1,24 +1,25 @@
-name: directory-listing
+
+name: main
 on: [push]
 
 jobs:
-  pages-directory-listing-release:
+  pages-directory-listing-master:
     runs-on: ubuntu-latest
-    name: Directory Listings Index
+    name: Test Actions Template
     steps:
-      - name: Checkout Repository
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: main    #checkout different branch
 
       - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v2.0.0
+        uses: ./ # Uses an action in the root directory
         with:
-          FOLDER: documents    #directory to generate index
+          FOLDER: documents
 
-      - name: Deploy to Pages
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main
-          FOLDER: data
+          BRANCH: gh-pages
+          FOLDER: documents
