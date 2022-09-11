@@ -9,7 +9,7 @@ jobs:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
-        uses: jayanta525/github-pages-directory-listing@v2.0.0
+        uses: actions/checkout@v3
 
       - name: Generate Directory Listings
         uses: ./ # Uses an action in the root directory
