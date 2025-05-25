@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 # Set the root directory here (relative or absolute path)
-ROOT_DIR = '.'  # Change this to your desired root directory, e.g., '../' or '/workspaces/FIA-Decision-Documents'
+ROOT_DIR = '../'  # Change this to your desired root directory, e.g., '../' or '/workspaces/FIA-Decision-Documents'
 
 def generate_index_html(dir_path, rel_path):
     entries = sorted(os.listdir(dir_path))
