@@ -5,7 +5,7 @@ from urllib.parse import quote
 # Set the root directory here (relative or absolute path)
 ROOT_DIR = '../'  # Change this to your desired root directory, e.g., '../' or '/workspaces/FIA-Decision-Documents'
 
-def generate_index_html(dir_path, rel_path):
+def generate_index_html(dir_path, rel_path, root_dir):
     entries = sorted(os.listdir(dir_path))
     html_lines = [
         '<!DOCTYPE html>',
@@ -36,7 +36,11 @@ def generate_index_html(dir_path, rel_path):
             continue
         full_path = os.path.join(dir_path, entry)
         display_name = entry + ('/' if os.path.isdir(full_path) else '')
-        href = quote(entry) + ('/' if os.path.isdir(full_path) else '')
+        # Compute the href as the absolute path from the root directory
+        abs_entry_path = os.path.relpath(os.path.join(dir_path, entry), root_dir)
+        href = '/' + quote(abs_entry_path.replace(os.sep, '/'))
+        if os.path.isdir(full_path):
+            href += '/'
         html_lines.append(f'      <li><a href="{href}">{display_name}</a></li>')
     html_lines += ['    </ul>', '  </div>', '</body>', '</html>']
     return '\n'.join(html_lines)
@@ -49,7 +53,7 @@ def main():
         rel_path = os.path.relpath(current_root, root_dir)
         rel_path = '.' if rel_path == '.' else rel_path
         index_path = os.path.join(current_root, 'index.html')
-        html = generate_index_html(current_root, rel_path)
+        html = generate_index_html(current_root, rel_path, root_dir)
         with open(index_path, 'w', encoding='utf-8') as f:
             f.write(html)
 
