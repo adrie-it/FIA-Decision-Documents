@@ -20,7 +20,7 @@ def generate_index_html(dir_path, rel_path, root_dir):
         li { margin: 0.2em 0; }
         a { text-decoration: none; color: #0074d9; padding: 0.2em 0.5em; border-radius: 3px; transition: background 0.2s; }
         a:hover { background: #e2e6ea; color: #005fa3; }
-        .container { max-width: 600px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 2em; }
+        .container { max-width: 900px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 2em; }
         </style>''',
         '</head>',
         '<body>',
@@ -30,7 +30,7 @@ def generate_index_html(dir_path, rel_path, root_dir):
     ]
     # Add parent directory link if not at root
     if Path(rel_path) != Path('.'):
-        html_lines.append('      <li><a href="../">../</a></li>')
+        html_lines.append('      <li><a href="../">../ Go back 1 folder</a></li>')
     for entry in entries:
         if entry == 'index.html':
             continue
