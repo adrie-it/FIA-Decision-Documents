@@ -42,7 +42,7 @@ def generate_index_html(dir_path, rel_path, root_dir):
         href = '/' + quote(abs_entry_path.replace(os.sep, '/'))
         if os.path.isdir(full_path):
             href += '/'
-        html_lines.append(f'      <li><a href="{href}" data-umami-event="file-opened">{display_name}</a></li>')
+        html_lines.append(f'      <li><a href="{href}">{display_name}</a></li>')
     html_lines += ['    </ul>', '  </div>', '</body>', '</html>']
     return '\n'.join(html_lines)
 
