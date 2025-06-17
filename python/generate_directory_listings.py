@@ -13,7 +13,6 @@ def generate_index_html(dir_path, rel_path, root_dir):
         '<head>',
         '  <meta charset="UTF-8">',
         f'  <title>Index of {rel_path}</title>',
-        '  <script defer src="https://umami.sh.adrie.it/script.js" data-website-id="37ce09a7-6ff9-4f3d-853e-f3698f8735d9"></script>',
         '''  <style>
         body { font-family: system-ui, sans-serif; background: #f8f9fa; color: #222; margin: 0; padding: 2em; }
         h2 { margin-top: 0; }
