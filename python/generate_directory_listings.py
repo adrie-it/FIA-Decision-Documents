@@ -1,4 +1,5 @@
 import os
+import os.path
 from pathlib import Path
 from urllib.parse import quote
 
@@ -56,6 +57,15 @@ def main():
         html = generate_index_html(current_root, rel_path, root_dir)
         with open(index_path, 'w', encoding='utf-8') as f:
             f.write(html)
+
+    os.remove("index.html")
+    with open(os.path.dirname(__file__) + '/../index.html', "r") as f:
+        lines = f.readlines()
+    with open(os.path.dirname(__file__) + '/../index.html', "w") as f:
+        for line in lines:
+            if line.strip("\n") != '      <li><a href="/python/">python/</a></li>':
+                f.write(line)
+
 
 if __name__ == '__main__':
     main()
