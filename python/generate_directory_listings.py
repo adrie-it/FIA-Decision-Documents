@@ -66,6 +66,19 @@ def main():
             if line.strip("\n") != '      <li><a href="/python/">python/</a></li>':
                 f.write(line)
 
+    with open(os.path.dirname(__file__) + '/../index.html', "r") as f:
+        lines = f.readlines()
+    with open(os.path.dirname(__file__) + '/../index.html', "w") as f:
+        for line in lines:
+            if line.strip("\n") != '      <li><a href="/.git/">.git/</a></li>':
+                f.write(line)
+
+    with open(os.path.dirname(__file__) + '/../index.html', "r") as f:
+        lines = f.readlines()
+    with open(os.path.dirname(__file__) + '/../index.html', "w") as f:
+        for line in lines:
+            if line.strip("\n") != '      <li><a href="/.qodo/">.qodo/</a></li>':
+                f.write(line)
 
 if __name__ == '__main__':
     main()
